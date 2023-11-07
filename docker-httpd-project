@@ -1,0 +1,13 @@
+sudo apt update
+mkdir docker-project
+cd docker-project
+sudo apt install docker.io -y
+sudo usermod -aG docker $USER
+sudo systemctl restart docker
+sudo reboot
+docker pull httpd
+docker ps
+docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+docker ps
+docker kill <container id>
+docker rm <container id>
